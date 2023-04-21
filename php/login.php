@@ -2,6 +2,7 @@
     //var_dump($_POST);
     //echo "<br>";
    
+    include "dbconexio.php";
 
     $user = $_POST["username"];
     $pass = md5($_POST["password"]);
@@ -19,4 +20,5 @@
         echo "S'ha produit un error";
     }
 
+    mysqli_close($conn);
 ?>

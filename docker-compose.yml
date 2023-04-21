@@ -1,0 +1,37 @@
+version: "3.7"
+services:
+  mariadb:
+    image: mariadb:10.7.8
+    environment:
+      - MYSQL_DATABASE=miapp
+      - MYSQL_ROOT_PASSWORD=alumne
+      - MYSQL_USER=alumne
+      - MYSQL_PASSWORD=alumne
+    volumes:
+      # Montamos un volumen para MySQL para no perder los datos de bd
+      - ./mysql:/var/lib/mysql
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+  
+  php:
+    image: php:7.4-apache
+    volumes:
+      # Montamos nuestra web desde fuera en el directorio web del contenedor
+      - ./DocumentRoot:/var/www/html
+    expose:
+      - 80
+    ports:
+      - 80:80
+    links: 
+      - mariadb
+      
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mariadb
+    depends_on:
+      - mariadb
