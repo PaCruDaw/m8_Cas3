@@ -16,7 +16,8 @@ services:
       - 3306:3306
   
   php:
-    image: php:7.4-apache
+    #image: php:7.3-apache
+    build: "./"
     volumes:
       # Montamos nuestra web desde fuera en el directorio web del contenedor
       - ./DocumentRoot:/var/www/html
