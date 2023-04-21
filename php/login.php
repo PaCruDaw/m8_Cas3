@@ -6,9 +6,17 @@
 
     $user = $_POST["username"];
     $pass = md5($_POST["password"]);
+    echo "$user <br>";
 
-    $usuari = "paula";
-    $contrasenya = md5("1234");
+    $sql = "SELECT nom, contrasenya 
+               FROM Alumnes WHERE nom='$user'";
+    $result = $conn->query($sql);
+    
+    $row = $result->fetch_assoc();
+    var_dump($row);
+    
+    $usuari = $row["nom"];
+    $contrasenya = $row["contrasenya"];
 
     if (strcmp($user,$usuari)==0) {
         if (strcmp($pass,$contrasenya)==0) {
