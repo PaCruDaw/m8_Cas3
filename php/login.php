@@ -23,7 +23,12 @@
             //$cookie_name = "Usuari_connexio";
             $cookie_value = $user;
             setcookie("Usuari_connexio", $cookie_value, time() + (86400));
-            header("location: Pagina_inicial.php");
+            if ($_SESSION["profe"]==0){
+                header("location: Pagina_inicial_alumne.php");
+            } 
+            if ($_SESSION["profe"]==1){
+                header("location: Pagina_inicial_profe.php");
+            }     
         } else {
             echo "S'ha produit un error";
         }
