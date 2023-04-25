@@ -1,5 +1,5 @@
 <?php
-               session_start();
+    session_start();
 
     require "dbconexio.php";
 
@@ -19,13 +19,16 @@
         if (strcmp($pass,$contrasenya)==0) {
             $_SESSION["user"] = $user;
             $_SESSION["profe"] = $row["teacher"];
+            mysqli_close($conn);
+            //$cookie_name = "Usuari_connexio";
+            $cookie_value = $user;
+            setcookie("Usuari_connexio", $cookie_value, time() + (86400));
+            header("location: Pagina_inicial.php");
         } else {
             echo "S'ha produit un error";
         }
     } else {
         echo "S'ha produit un error";
     }
-
     mysqli_close($conn);
-    header("location: Pagina_inicial.php");
 ?>
