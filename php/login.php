@@ -6,7 +6,7 @@
     $user = $_POST["username"];
     $pass = md5($_POST["password"]);
 
-    $sql = "SELECT nom, contrasenya, teacher
+    $sql = "SELECT id, nom, contrasenya, teacher
                FROM Alumnes WHERE nom='$user'";
     $result = $conn->query($sql);
     
