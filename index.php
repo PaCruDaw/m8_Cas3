@@ -9,7 +9,7 @@
             header("location: php/Pagina_inicial_profe.php");
         }     
     } else {
-        include "html/login.html";
+        include "php/index.php";
     }
     
 ?>      

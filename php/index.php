@@ -9,8 +9,10 @@
   <body class="Gran">
     <div class="INICI">
       <h2>Inici de Sessio </h2>
-      <h3><?php if ($_GET["ko"]==1) { echo "S'ha produit un error"; } ?></h3>
-      <form action="../php/login.php" method="post">
+      <?php if ($_GET["ko"]==1) {
+         echo "S'ha produit un error";
+         } ?>
+        <form action="../php/login.php" method="post">
         <label for="username">Usuari: </label>
         <input type="text" name="username" required>
         <label for="password">Contrasenya: </label>

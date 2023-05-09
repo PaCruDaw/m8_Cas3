@@ -1,0 +1,59 @@
+.Gran {
+    background-image: url(https://agora.xtec.cat/insmontsia/wp-content/uploads/usu12/2017/02/banner1.jpg);
+    background-size: cover;
+    background-position:  center;
+    background-repeat: no-repeat;
+    height: 95vh;
+  }
+  .INICI{
+      width: 90%;
+      max-width: 400px;
+      margin: auto;
+      margin-top: 50px;
+      padding: 20px;
+      background-color: #c9c9c9ad;
+      border-radius: 10px;
+      box-shadow: 0px 0px 150px #000000;
+  }
+  
+  .INICI h2 {
+      text-align: Center;
+      margin-bottom: 40px;
+      font-family: Georgia, Times, 'Times New Roman', serif;
+      font-size: 24px;
+  }
+  
+  .INICI label {
+      display: block;
+      margin-bottom: 5px;
+  }
+  
+  
+  .INICI input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #000000;
+      box-sizing: border-box;
+  }
+  
+  .INICI input[type	="submit"] {
+      background-color: #000000;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+  }
+  
+  .INICI input[type="submit"]:hover {
+      background-color: #00000054;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .INICI {
+      margin-top: 100px;
+    }
+  }

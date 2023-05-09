@@ -1,13 +1,18 @@
 <?php
+    //Comença una nova sessio o reutilitza la sessió
     session_start();
 
+     //Conexio al php de la base de dades
     require "dbconexio.php";
 
+    //Definicio de la les variables usuaris i contrasenya, i la contasneya estara encriptada.
     $user = $_POST["username"];
-    $pass = md5($_POST["password"]);
+    $pass = md5($_POST["password"]);    
 
-    $sql = "SELECT id, nom, contrasenya, teacher
-               FROM Alumnes WHERE nom='$user'";
+    //A continuacio es fara un select de la taula usuaris el nom, la contrasenya i tambe el roll
+    $sql = "SELECT id, nom, contrasenya, roll
+            FROM Usuaris WHERE nom='$user'";
+    //Ens donara el resultat de la cosulta anterior
     $result = $conn->query($sql);
     
     $row = $result->fetch_assoc();
@@ -18,7 +23,7 @@
     if (strcmp($user,$usuari)==0) {
         if (strcmp($pass,$contrasenya)==0) {
             $_SESSION["user"] = $user;
-            $_SESSION["profe"] = $row["teacher"];
+            $_SESSION["profe"] = $row["roll"];
             mysqli_close($conn);
             //$cookie_name = "Usuari_connexio";
             $cookie_value = $user;
@@ -30,10 +35,13 @@
                 header("location: Pagina_inicial_profe.php");
             }     
         } else {
-            echo "S'ha produit un error";
+            header("location: ../php/index.php?ko=1");
+
         }
     } else {
-        echo "S'ha produit un error";
+        header("location: ../php/index.php?ko=1");
+ 
     }
     mysqli_close($conn);
 ?>
+   
