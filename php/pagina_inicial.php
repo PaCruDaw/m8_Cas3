@@ -8,37 +8,40 @@
           
   <?php endif; ?>
 
-    <?php if (($_SESSION["profe"] == 0) ): ?>      
-        <a class="nav-link" href="../php/Pagina_alumnes_inciden.php">
+    <?php //vista opcions de lateral per a alumnes
+    if (($_SESSION["profe"] == 0) ): ?>      
+        <a class="nav-link" href="pagina_inicial.php?search=1">
                     <span data-feather="file"></span>
                     Incidencies
                 </a>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="pagina_inicial.php?search=2">
                     <span data-feather="file"></span>
                     Solicitar material
                  </a>
     <?php endif; ?>
-    <?php if (($_SESSION["profe"] == 1) ): ?>
+
+    <?php //vistas opcions de lateral per a mestres
+    if (($_SESSION["profe"] == 1) ): ?>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="pagina_inicial.php?search=1">
               <span data-feather="file"></span>
                 Gestió Sol.licituts
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="pagina_inicial.php?search=2">
               <span data-feather="shopping-cart"></span>
                 Gestió Dispositius
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="pagina_inicial.php?search=3">
               <span data-feather="users"></span>
                Gestió Alumnat
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="pagina_inicial.php?search=4">
               <span data-feather="users"></span>
                Gestió Incidencies
             </a>
@@ -65,20 +68,145 @@
         </div>
       </div>
 
-      <h2>Els meus dispositius</h2>
+      <?php //vista titols per a alumne
+      if (($_SESSION["profe"] == 0) ): ?> 
+        <?php if (!isset($_GET["search"])): ?>
+          <h2>Els meus dispositius assignats</h2>        
+        <?php endif; ?>
+        <?php  if ($_GET["search"] == 1): ?>
+          <h2>Les meues incidencies</h2>
+        <?php endif; ?>
+        <?php  if ($_GET["search"] == 2): ?>
+          <h2>Les meues sol.licituts de material</h2>
+        <?php endif; ?>
+      <?php endif; ?>
+
+      <?php //vistes titols per a professor
+      if (($_SESSION["profe"] == 1) ): ?> 
+        <?php if (!isset($_GET["search"])): ?>
+          <h2>a determinar</h2>        
+        <?php endif; ?>
+        <?php  if ($_GET["search"] == 1): ?>
+          <h2>Gestió de solicituts</h2>
+        <?php endif; ?>
+        <?php  if ($_GET["search"] == 2): ?>
+          <h2>Gestió de dispositius</h2>
+        <?php endif; ?>
+        <?php  if ($_GET["search"] == 3): ?>
+          <h2>Gestio Alumnat</h2>
+        <?php endif; ?>
+        <?php  if ($_GET["search"] == 4): ?>
+          <h2>Gestio Incidencies</h2>
+        <?php endif; ?>
+      <?php endif; ?>
+
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">Tipus</th>
-              <th scope="col">Data prestec</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-            </tr>
+
+          <?php //inici vista alumne capçelera taula
+           if (($_SESSION["profe"] == 0) ): ?> 
+            <?php if (!isset($_GET["search"])): ?>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Tipus</th>
+                <th scope="col">Data prestec</th>
+                <th scope="col">Header</th>
+                <th scope="col">Header</th>
+              </tr>
+            <?php endif; ?>
+            <?php  if ($_GET["search"] == 1): ?>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Incidencia</th>
+                <th scope="col">Data prestec</th>
+                <th scope="col">Header</th>
+                <th scope="col">Header</th>
+              </tr>
+            <?php endif; ?>
+            <?php  if ($_GET["search"] == 2): ?>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Sol.licitud</th>
+                <th scope="col">Data prestec</th>
+                <th scope="col">Header</th>
+                <th scope="col">Header</th>
+              </tr>        <?php endif; ?>
+          <?php endif; ?>
+
+          <?php //Inici vista professor capçelera taula
+          if (($_SESSION["profe"] == 1) ): ?> 
+            <?php if (!isset($_GET["search"])): ?>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Tipus</th>
+                <th scope="col">Data prestec</th>
+                <th scope="col">Header</th>
+                <th scope="col">Header</th>
+              </tr>
+            <?php endif; ?>
+            <?php  if ($_GET["search"] == 1): ?>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Incidencia</th>
+                <th scope="col">Data prestec</th>
+                <th scope="col">Header</th>
+                <th scope="col">Header</th>
+              </tr>
+            <?php endif; ?>
+            <?php  if ($_GET["search"] == 2): ?>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Sol.licitud</th>
+                <th scope="col">Data prestec</th>
+                <th scope="col">Header</th>
+                <th scope="col">Header</th>
+              </tr>       
+            <?php endif; ?>
+            <?php  if ($_GET["search"] == 3): ?>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">Sol.licitud</th>
+                  <th scope="col">Data prestec</th>
+                  <th scope="col">Header</th>
+                  <th scope="col">Header</th>
+                </tr>        
+            <?php endif; ?>
+            <?php  if ($_GET["search"] == 4): ?>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">Sol.licitud</th>
+                  <th scope="col">Data prestec</th>
+                  <th scope="col">Header</th>
+                  <th scope="col">Header</th>
+                </tr>        
+            <?php endif; ?>
+          <?php endif; ?>
+
           </thead>
           <tbody>
-            <?php require "../php/assignacions_alumne.php"; ?>
+
+            <?php
+             //reserques per alumnes
+              if (($_SESSION["profe"] == 0) ) {
+                if (!isset($_GET["search"])):
+                  require "assignacions_alumne.php"; 
+                endif;
+                if ($_GET["search"]==1):
+                  require "reserca_incidencies.php";
+                endif;
+              }
+              //reserques de professor
+              if (($_SESSION["profe"] == 1) ) {
+                if (!isset($_GET["search"])):
+                  require "assignacions_alumne.php"; 
+                endif;
+                if ($_GET["search"]==1):
+                  require "reserca_incidencies.php";
+                endif;
+              }
+            
+            ?>
           </tbody>
         </table>
       </div>
