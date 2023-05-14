@@ -28,12 +28,7 @@
             //$cookie_name = "Usuari_connexio";
             $cookie_value = $user;
             setcookie("Usuari_connexio", $cookie_value, time() + (86400));
-            if ($_SESSION["profe"]==0){
-                header("location: pagina_inicial.php");
-            } 
-            if ($_SESSION["profe"]==1){
-                header("location: pagina_inicial.php");
-            }     
+            header("location: pagina_inicial.php");   
         } else {
             header("location: ../index.php?ko=1");
 
