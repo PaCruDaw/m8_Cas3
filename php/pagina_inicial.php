@@ -8,6 +8,19 @@
           
   <?php endif; ?>
 
+  <div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../php/pagina_inicial.php">
+              <span data-feather="home"></span>
+                <?php echo "Pagina inicial ".$_SESSION["user"]; ?>
+            </a>
+          </li>
+
+
     <?php //vista opcions de lateral per a alumnes
     if (($_SESSION["profe"] == 0) ): ?>      
         <a class="nav-link" href="pagina_inicial.php?search=1">
@@ -55,16 +68,38 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
+        <h1 class="h2"><?php if ($_GET["ok"]==1) {echo "Operació realitzada correctament."; } ?></h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-          </div>
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar"></span>
-            This week
-          </button>
+          <?php //vista boto per a alumne
+            if (($_SESSION["profe"] == 0) ):
+              if ($_GET["search"] == 1): ?>
+                <button type="button" class="btn btn-sm btn-outline-secondary " onclick = "location='../html/Pagina_reserca_incidencies.html'" > 
+                  <span data-feather="Sol.licitar"></span>
+                    Crear Incidencia
+                  
+                </button>
+              <?php endif; 
+              if ($_GET["search"] == 2): ?>
+                <button type="button" class="btn btn-sm btn-outline-secondary ">
+                  <span data-feather="Sol.licitar"></span>
+                    Nova sol.licitut
+                </button>
+              <?php endif; ?>
+            <?php endif; 
+            if (($_SESSION["profe"] == 1) ):  //vista professor boto
+              if ($_GET["search"] == 2): ?>
+                <button type="button" class="btn btn-sm btn-outline-secondary " onclick = "location='../html/formulari_material.html'"  >
+                  <span data-feather="Sol.licitar"></span>
+                    Alta material
+                </button>
+              <?php  endif;
+              if ($_GET["search"] == 3): ?>
+                <button type="button" class="btn btn-sm btn-outline-secondary ">
+                  <span data-feather="Comunicar"></span>
+                    Alta Alumne
+                </button>
+              <?php endif; 
+            endif; ?>
         </div>
       </div>
 
@@ -201,7 +236,7 @@
                 if (!isset($_GET["search"])):
                   require "assignacions_alumne.php"; 
                 endif;
-                if ($_GET["search"]==1):
+                if ($_GET["search"]==2):
                   require "reserca_incidencies.php";
                 endif;
               }

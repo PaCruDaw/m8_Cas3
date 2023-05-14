@@ -2,7 +2,7 @@
  session_start();
 if (isset($_SESSION["user"])): ?>
       
-  <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pagina_inicial.php">
+  <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=/php/pagina_inicial.php">
       
 <?php endif; ?>
 
