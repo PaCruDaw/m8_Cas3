@@ -24,7 +24,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     
-    <link rel="stylesheet" href="../../css/pagina_principal.css">
+    <link rel="stylesheet" href="../css/pagina_principal.css">
 
   </head>
 
@@ -47,7 +47,7 @@
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../php/pagina_inicial.php">
+                <a class="nav-link active" aria-current="page" href="../php/pagina_inicial.php" style="color:#3b76e1;" >
                   <span data-feather="home"></span>
                     <?php echo "Pagina inicial ".$_SESSION["user"]; ?>
                 </a>
@@ -56,7 +56,7 @@
     
         <?php //vista opcions de lateral per a alumnes
         if (($_SESSION["profe"] == 0) ): ?>      
-            <a class="nav-link" href="pagina_inicial.php?search=1">
+            <a class="nav-link" href="pagina_inicial.php?search=1" style="color:black">
                         <span data-feather="file"></span>
                         Incidencies
                     </a>
@@ -68,13 +68,13 @@
     
         <?php //vistas opcions de lateral per a mestres
         if (($_SESSION["profe"] == 1) ): ?>
-            <li class="nav-item">
-                <a class="nav-link" href="pagina_inicial.php?search=1">
+            <li class="nav-item" style="color:black;">
+                <a class="nav-link" href="pagina_inicial.php?search=1" >
                   <span data-feather="file"></span>
                     Gestió Sol.licituts
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" >
                 <a class="nav-link" href="pagina_inicial.php?search=2">
                   <span data-feather="shopping-cart"></span>
                     Gestió Dispositius
@@ -200,7 +200,8 @@
                                 <th scope="col" style="width: 200px;">Action</th>
                             </tr>
                           <?php endif; ?>
-                          <?php  if ($_GET["search"] == 1): ?>                            <tr>
+                          <?php  if ($_GET["search"] == 1): ?>                            
+                            <tr>
                                 <th scope="col" class="ps-4" style="width: 50px;">
                                     <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
                                 </th>
@@ -225,7 +226,7 @@
                           <?php endif;
                         endif;
                         if ($_SESSION["profe"] == 1) : //vistas profesor columnas titulos
-                            if ($_GET["search"] == 4): ?> 
+                            if ($_GET["search"] == 2): ?> 
                                 <tr>
                                   <th>id</th>
                                   <th>idTipus</th>
@@ -255,8 +256,8 @@
                             if (!isset($_GET["search"])) {
                               require "assignat_alumne.php"; 
                             }
-                            if ($_GET["search"]==4){
-                              require "reserca_incidencies.php";
+                            if ($_GET["search"]==2){
+                              require "reserca_material.php";
                             }
                           } ?>
                           
@@ -289,5 +290,6 @@
       </div>
   </div>
 </div>
+
 </body>
 </html>
