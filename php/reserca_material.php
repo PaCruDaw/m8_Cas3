@@ -24,10 +24,10 @@
                     <td > 
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
-                                <a href="" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary" ><i class="bx bx-pencil font-size-18"></i></a>
+                                <a href="formulari_edicio_material.php?id=<?= $row['id']?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary" ><i class="bx bx-pencil font-size-18"></i></a>
                             </li>
-                            <li class="list-inline-item" >
-                                <a href="#" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="<?= $row['id']; ?>">
+                            <li class="list-inline-item"  >
+                                <a href="#" class="px-2 text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="<?= $row['id']; ?>">
                                     <i class="bx bx-trash-alt font-size-18"></i>
                                 </a>                        
                                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -55,13 +55,9 @@
                         </ul>
                     </td>
                 </tr>
-<script>
-        deleteModal.addEventListener('shown.bs.modal', event => {
-            let button = event.relatedTarget
-            let id = button.getAttribute('data-bs-id')
-            deleteModal.querySelector('.modal-footer #id').value = id
-        })
-</script>
+
+                
+    <script type="text/javascript" src="../js/modales.js"></script>
 
 <?php  
         }

@@ -1,3 +1,31 @@
+<?php 
+    session_start();
+    require "dbconexio.php";
+
+    $id = $_GET["id"];
+  
+    $sql = "SELECT *
+            FROM Material WHERE id=$id";
+    
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) { 
+
+            $idT = $row["idTipus"];
+            $lavel = $row["etiquetaDepInf"];
+            $ns = $row["numSerie"];
+            $macE = $row["macEthernet"];
+            $macW = $row["macWifi"];
+            $ace = $row["SACE"];
+            $data = $row["dataAdquisicio"];
+            $lloc = $row["idUbicacio"];  
+        }
+
+    }?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -45,28 +73,19 @@
   <main>
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="../imagenes/logoCombinat.jpg" alt="" width="82" height="67">
-      <h2>Alta de material</h2>
-      <p class="lead">Omple el següent formulari per a donar d'alta el material per al seu prestec al alumnat.</p>
+      <h2>Modificar dades del registre <?= $id; ?></h2>
     </div>
 
     <div class="row g-5">
       <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3">Formulari</h4>
-        <form class="needs-validation" novalidate action="../php/alta_material.php" method="post">
+        <form class="needs-validation" novalidate action="update_material.php" method="post">
           <div class="row g-3">
 
+          <input type="hidden" class="form-control" id="id" name = "id" placeholder="" value='<?= $id; ?>' required>
 
             <div class="col-sm-3">
-              <label for="lastName" class="form-label">Codi del dispositiu</label>
-              <input type="text" class="form-control" id="etiquetaDepinf" name = "id" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                El camp etiqueta es obligatori.
-              </div>
-            </div>
-
-            <div class="col-sm-3">
-              <label for="lastName" class="form-label">Codi tipus</label>
-              <input type="text" class="form-control" id="idTipus" name = "idTipus" placeholder="" value="" required>
+              <label for="lastName" class="form-label" >Codi tipus</label>
+              <input type="text" class="form-control" id="idTipus" name = "idTipus" placeholder="" value='<?= $idT; ?>' required>
               <div class="invalid-feedback">
                 El camp etiqueta es obligatori.
               </div>
@@ -74,7 +93,7 @@
            
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Etiqueta departament</label>
-              <input type="text" class="form-control" id="etiquetaDepinf" name = "etiqueta" placeholder="" value="" required>
+              <input type="text" class="form-control" id="etiquetaDepinf" name = "etiqueta" placeholder="" value="<?= $lavel; ?>" required>
               <div class="invalid-feedback">
                 El camp etiqueta es obligatori.
               </div>
@@ -82,7 +101,7 @@
 
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Número de serie</label>
-              <input type="text" class="form-control" id="numSerie" name ="nSerie" placeholder="" value="" >
+              <input type="text" class="form-control" id="numSerie" name ="nSerie" placeholder="" value="<?= $nS; ?>" >
               <div class="invalid-feedback">
                 El camp número de serie es obligatori.
               </div>
@@ -91,7 +110,7 @@
             <div class="col-sm-6">
               <label for="username" class="form-label">MAC Ethernet </label>
               <div class="input-group has-validation">
-                <input type="text" class="form-control" id="macEther" name = "macEther" placeholder="">
+                <input type="text" class="form-control" id="macEther" name = "macEther" placeholder="" value = "<?= $macE; ?>">
                 <div class="invalid-feedback">
                   Introdueix una MAC valida.
                 </div>
@@ -101,7 +120,7 @@
             <div class="col-sm-6">
                 <label for="username" class="form-label">MAC Wifi </label>
                 <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="macWifi" name = "macWifi" placeholder="">
+                  <input type="text" class="form-control" id="macWifi" name = "macWifi" placeholder="" value = "<?= $macW; ?>">
                   <div class="invalid-feedback">
                     Introdueix una MAC valida.
                   </div>
@@ -111,7 +130,7 @@
             <div class="col-sm-6">
                 <label for="username" class="form-label">SACE</label>
                 <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="sace" name = "sace" placeholder="">
+                  <input type="text" class="form-control" id="sace" name = "sace" placeholder="" value = "<?= $sace; ?>" >
                   <div class="invalid-feedback">
                     Introdueix una sace valida.
                   </div>
@@ -120,7 +139,7 @@
 
             <div class="col-sm-6">
                 <label for="lastName" class="form-label">Data de adquisició</label>
-                <input type="text" class="form-control" id="data" name = "data" placeholder="" value="" >
+                <input type="text" class="form-control" id="data" name = "data" placeholder="" value="<?= $data; ?>" >
                 <div class="invalid-feedback">
                   El camp data d'adquisició es obligatori.
                 </div>
@@ -128,7 +147,7 @@
 
             <div class="col-sm-6">
                 <label for="lastName" class="form-label">Ubicació</label>
-                <input type="text" class="form-control" id="ubicacio" name = "ubicacio" placeholder="" value="" required>
+                <input type="text" class="form-control" id="ubicacio" name = "ubicacio" placeholder="" value="<?= $lloc; ?>" required>
                 <div class="invalid-feedback">
                   El camp ubicació es obligatori.
                 </div>
@@ -137,7 +156,7 @@
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit" action>Enviar Modificació</button>
         </form>
       </div>
     </div>
@@ -157,3 +176,15 @@
       <script src="./js/form-validation.js"></script>
   </body>
 </html>
+   
+
+    <?php 
+    
+    if (!mysqli_query($conn, $sql)): ?>
+   
+        <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pagina_inicial.php?ok=-1&search=2">
+    <?php endif;
+    
+
+    $conn->close();
+?>
