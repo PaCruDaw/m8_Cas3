@@ -77,7 +77,7 @@
               <li class="nav-item" >
                 <a class="nav-link" href="pagina_inicial.php?search=2">
                   <span data-feather="shopping-cart"></span>
-                    Gestió Dispositius
+                    Gestió Material
                 </a>
               </li>
               <li class="nav-item">
@@ -119,7 +119,6 @@
                     <button type="button" class="btn btn-sm btn-outline-secondary " onclick = "location='../html/Pagina_reserca_incidencies.html'" > 
                       <span data-feather="Sol.licitar"></span>
                         Crear Incidencia
-                      
                     </button>
                   <?php endif; 
                   if ($_GET["search"] == 2): ?>
@@ -129,6 +128,7 @@
                     </button>
                   <?php endif; ?>
                 <?php endif; 
+
                 if (($_SESSION["profe"] == 1) ):  //vista professor boto
                   if ($_GET["search"] == 2): ?>
                     <button type="button" class="btn btn-sm btn-outline-secondary " onclick = "location='../html/formulari_material.html'"  >
@@ -162,13 +162,13 @@
           <?php //vistes titols per a professor
           if (($_SESSION["profe"] == 1) ): ?> 
             <?php if (!isset($_GET["search"])): ?>
-              <h2>a determinar</h2>        
+              <h2>Reserques a la base dades</h2>        
             <?php endif; ?>
             <?php  if ($_GET["search"] == 1): ?>
               <h2>Gestió de solicituts</h2>
             <?php endif; ?>
             <?php  if ($_GET["search"] == 2): ?>
-              <h2>Gestió de dispositius</h2>
+              <h2>Gestió de Material</h2>
             <?php endif; ?>
             <?php  if ($_GET["search"] == 3): ?>
               <h2>Gestio Alumnat</h2>
@@ -253,11 +253,20 @@
                           } 
                           //reserques de professor
                           if (($_SESSION["profe"] == 1) ) {
-                            if (!isset($_GET["search"])) {
-                              require "assignat_alumne.php"; 
+                            if (!isset($_GET["search"])) { //no existeix search
+                              require "reserca_solicituts.php"; 
+                            }
+                            if ($_GET["search"]==1){
+                              require "reserca_solicituts.php";
                             }
                             if ($_GET["search"]==2){
                               require "reserca_material.php";
+                            }
+                            if ($_GET["search"]==3){
+                              require "reserca_alumnes.php";
+                            }
+                            if ($_GET["search"]==4){
+                              require "reserca_incidencies.php";
                             }
                           } ?>
                           
