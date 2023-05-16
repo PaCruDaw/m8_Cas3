@@ -252,8 +252,30 @@
                           } 
                           //reserques de professor
                           if (($_SESSION["profe"] == 1) ) {
-                            if (!isset($_GET["search"])) { //no existeix search
-                              require "reserca_solicituts.php"; 
+                            if (!isset($_GET["search"])) { //no existeix search ?>
+                              <div>
+                                  <form action="#" method ="get">
+                                      <label for="fname">Reserca material en el aula:</label>
+                                      <input type="text" id="aula" name="aula"><br>
+                                  </form>
+                                  
+                              </div>
+                              <div>
+                                  <form action="#" method ="get">
+                                      <label for="fname">Reserca material assignat al alumne:</label>
+                                      <input type="text" id="alumne" name="alumne"><br>
+                                  </form>
+                                  
+                              </div>
+                            <?php  
+                              if (isset($_GET["aula"])) {
+                                require "reserques_mestre_material.php"; 
+                              }
+                              if (isset($_GET["alumne"])) {
+                                require "reserques_mestre_alumnat.php"; 
+
+                              }
+                                
                             }
                             if ($_GET["search"]==1){
                               require "reserca_solicituts.php";

@@ -2,6 +2,8 @@
     session_start();
     require "dbconexio.php";
 
+    date_default_timezone_set("Europe/Madrid"); //per a que agafe correctament la zona horaria
+
     $ip = getenv('REMOTE_ADDR');
     $nav = get_browser_name($_SERVER['HTTP_USER_AGENT']);
 
@@ -23,7 +25,7 @@
     <?php 
     }
 
-     $conn->close();
+    $conn->close(); //tanquem connexio abans de la redireccio
 
     if ($_GET["accio"] ==1) { ?>
         <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pagina_inicial.php">    
