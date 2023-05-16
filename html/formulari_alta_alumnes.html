@@ -46,52 +46,52 @@
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="../imagenes/logoCombinat.jpg" alt="" width="82" height="67">
       <h2>Alta de material</h2>
-      <p class="lead">Omple el següent formulari per a donar d'alta el material per al seu prestec al alumnat.</p>
+      <p class="lead">Omple el següent formulari per a poder insertar un nou alumne.</p>
     </div>
 
     <div class="row g-5">
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Formulari</h4>
-        <form class="needs-validation" novalidate action="../php/alta_material.php" method="post">
+        <form class="needs-validation" novalidate action="../php/alta_alumne.php" method="post">
           <div class="row g-3">
 
 
             <div class="col-sm-3">
-              <label for="lastName" class="form-label">Codi del dispositiu</label>
-              <input type="text" class="form-control" id="etiquetaDepinf" name = "id" placeholder="" value="" required>
+              <label for="lastName" class="form-label">ID del alumne</label>
+              <input type="text" class="form-control" id="id" name = "id" placeholder="" value="" required>
               <div class="invalid-feedback">
                 El camp etiqueta es obligatori.
               </div>
             </div>
 
             <div class="col-sm-3">
-              <label for="lastName" class="form-label">Codi tipus</label>
-              <input type="text" class="form-control" id="idTipus" name = "idTipus" placeholder="" value="" required>
+              <label for="lastName" class="form-label">Nom</label>
+              <input type="text" class="form-control" id="nom" name = "nom" placeholder="" value="" required>
               <div class="invalid-feedback">
                 El camp etiqueta es obligatori.
               </div>
             </div>
            
             <div class="col-sm-6">
-              <label for="lastName" class="form-label">Etiqueta departament</label>
-              <input type="text" class="form-control" id="etiquetaDepinf" name = "etiqueta" placeholder="" value="" required>
+              <label for="lastName" class="form-label">Cognom1</label>
+              <input type="text" class="form-control" id="cognom1" name = "cognom1" placeholder="" value="" required>
               <div class="invalid-feedback">
                 El camp etiqueta es obligatori.
               </div>
             </div>
 
             <div class="col-sm-6">
-              <label for="lastName" class="form-label">Número de serie</label>
-              <input type="text" class="form-control" id="numSerie" name ="nSerie" placeholder="" value="" >
+              <label for="lastName" class="form-label">Cognom2</label>
+              <input type="text" class="form-control" id="cognom2" name ="cognom2" placeholder="" value="" >
               <div class="invalid-feedback">
                 El camp número de serie es obligatori.
               </div>
             </div>
 
             <div class="col-sm-6">
-              <label for="username" class="form-label">MAC Ethernet </label>
+              <label for="username" class="form-label">Correu Electronic</label>
               <div class="input-group has-validation">
-                <input type="text" class="form-control" id="macEther" name = "macEther" placeholder="">
+                <input type="text" class="form-control" id="correu" name = "correu" placeholder="">
                 <div class="invalid-feedback">
                   Introdueix una MAC valida.
                 </div>
@@ -99,9 +99,9 @@
             </div>
 
             <div class="col-sm-6">
-                <label for="username" class="form-label">MAC Wifi </label>
+                <label for="username" class="form-label">Contrasenya</label>
                 <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="macWifi" name = "macWifi" placeholder="">
+                  <input type="text" class="form-control" id="contrasenya" name = "contrasenya" placeholder="">
                   <div class="invalid-feedback">
                     Introdueix una MAC valida.
                   </div>
@@ -109,42 +109,33 @@
             </div>
 
             <div class="col-sm-6">
-                <label for="username" class="form-label">SACE</label>
+                <label for="username" class="form-label">Roll</label>
                 <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="sace" name = "sace" placeholder="">
+                  <input type="text" class="form-control" id="roll" name = "roll" placeholder="">
                   <div class="invalid-feedback">
                     Introdueix una sace valida.
                   </div>
                 </div>
             </div>
-
-            <div class="col-sm-6">
-                <label for="lastName" class="form-label">Data de adquisició</label>
-                <input type="text" class="form-control" id="data" name = "data" placeholder="" value="" >
+            <div            Cognom2
+              class="col-sm-6">
+                <label for="lastName" class="form-label">Classe i Grup</label>
+                <input type="text" class="form-control" id="grupClase" name = "grupClase" placeholder="" value="" >
                 <div class="invalid-feedback">
                   El camp data d'adquisició es obligatori.
                 </div>
             </div>
-
-            <div class="col-sm-6">
-                <label for="lastName" class="form-label">Ubicació</label>
-                <input type="text" class="form-control" id="ubicacio" name = "ubicacio" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  El camp ubicació es obligatori.
-                </div>
-             </div>
           </div>
 
           <hr class="my-4">
-
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Envia Formulari</button>
         </form>
       </div>
     </div>
   </main>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017–2021 Company Name</p>
+    <p class="mb-1">&copy; 2022-2023 Company Name</p>
     <ul class="list-inline">
       <li class="list-inline-item"><a href="#">Privacy</a></li>
       <li class="list-inline-item"><a href="#">Terms</a></li>

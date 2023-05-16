@@ -1,6 +1,6 @@
 <?php
     session_start();  
-    header("location:../index.php");
+    header("location: tabla_logs.php?accio=0");
     session_unset();
     session_destroy();
 ?>    
