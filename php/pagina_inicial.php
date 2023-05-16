@@ -37,7 +37,7 @@
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-          <a class="nav-link px-3" href="../php/logout.php" style="color:white;">Sign out</a>
+          <a class="nav-link px-3" href="../php/tabla_logs.php?accio=0" style="color:white;">Sign out</a>
         </div>
       </div>
     </header>
@@ -137,9 +137,8 @@
                     </button>
                   <?php  endif;
                   if ($_GET["search"] == 3): ?>
-                    <button type="button" class="btn btn-sm btn-outline-secondary ">
-                      <span data-feather="Comunicar"></span>
-                        Alta Alumne
+                    <button type="button" class="btn btn-sm btn-outline-secondary " onclick = "location='../html/formulari_alta_alumnes.html'" > 
+                      <span data-feather="Comunicar"></span>Alta Alumne
                     </button>
                   <?php endif; 
                 endif; ?>
