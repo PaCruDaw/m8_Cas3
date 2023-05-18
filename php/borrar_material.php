@@ -8,12 +8,10 @@
     $sql = "DELETE FROM Material 
             WHERE id = $id";
             
-    if (mysqli_query($conn, $sql)) {
-        echo "Operacio realitzada correctament"; ?>
+    if (mysqli_query($conn, $sql)) { ?>
         <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pagina_inicial.php?ok=1&search=2">
     <?php
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn); ?>
+    } else { ?>
         <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pagina_inicial.php?ok=-1&search=2">
     <?php 
     }

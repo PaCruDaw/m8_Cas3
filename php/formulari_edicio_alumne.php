@@ -1,3 +1,31 @@
+<?php 
+    session_start();
+    require "dbconexio.php";
+
+    $id = $_GET["id"];
+  
+    $sql = "SELECT *
+            FROM Usuaris WHERE id=$id";
+    
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) { 
+
+            $nom = $row["nom"];
+            $cognom1 = $row["cognom1"];
+            $cognom2 = $row["cognom2"];
+            $correu = $row["correu"];
+            $contrasenya = $row["contrasenya"];
+            $roll = $row["roll"];            
+            $grupClasse = $row["grupClasse"];
+
+        }
+
+    }?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -52,21 +80,12 @@
     <div class="row g-5">
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Formulari</h4>
-        <form class="needs-validation" novalidate action="../php/alta_alumne.php" method="post">
+        <form class="needs-validation" novalidate action="../php/update_alumne.php" method="post">
+        <input type="hidden" class="form-control" id="id" name = "id" placeholder="" value='<?= $id; ?>' required>
           <div class="row g-3">
-
-
-            <div class="col-sm-3">
-              <label for="lastName" class="form-label">ID del alumne</label>
-              <input type="text" class="form-control" id="id" name = "id" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                El camp etiqueta es obligatori.
-              </div>
-            </div>
-
             <div class="col-sm-3">
               <label for="lastName" class="form-label">Nom</label>
-              <input type="text" class="form-control" id="nom" name = "nom" placeholder="" value="" required>
+              <input type="text" class="form-control" id="nom" name = "nom" placeholder="" value='<?= $nom; ?>' required>
               <div class="invalid-feedback">
                 El camp etiqueta es obligatori.
               </div>
@@ -74,7 +93,7 @@
            
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Cognom1</label>
-              <input type="text" class="form-control" id="cognom1" name = "cognom1" placeholder="" value="" required>
+              <input type="text" class="form-control" id="cognom1" name = "cognom1" placeholder="" value='<?= $cognom1; ?>' required>
               <div class="invalid-feedback">
                 El camp etiqueta es obligatori.
               </div>
@@ -82,7 +101,7 @@
 
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Cognom2</label>
-              <input type="text" class="form-control" id="cognom2" name ="cognom2" placeholder="" value="" >
+              <input type="text" class="form-control" id="cognom2" name ="cognom2" placeholder="" value='<?= $cognom2; ?>' >
               <div class="invalid-feedback">
                 El camp número de serie es obligatori.
               </div>
@@ -91,9 +110,9 @@
             <div class="col-sm-6">
               <label for="username" class="form-label">Correu Electronic</label>
               <div class="input-group has-validation">
-                <input type="text" class="form-control" id="correu" name = "correu" placeholder="">
+                <input type="text" class="form-control" id="correu" name = "correu" placeholder="" value ='<?= $correu; ?>'>
                 <div class="invalid-feedback">
-                  Introdueix una MAC valida.
+                  El correu es obligatori
                 </div>
               </div>
             </div>
@@ -101,7 +120,7 @@
             <div class="col-sm-6">
                 <label for="username" class="form-label">Contrasenya</label>
                 <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="contrasenya" name = "contrasenya" placeholder="">
+                  <input type="text" class="form-control" id="contrasenya" name = "contrasenya" placeholder="" value = '<?= $contrasenya; ?>'>
                   <div class="invalid-feedback">
                     Introdueix una MAC valida.
                   </div>
@@ -111,7 +130,7 @@
             <div class="col-sm-6">
                 <label for="username" class="form-label">Roll</label>
                 <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="roll" name = "roll" placeholder="">
+                  <input type="text" class="form-control" id="roll" name = "roll" placeholder="" value = '<?= $roll; ?>'>
                   <div class="invalid-feedback">
                     Introdueix una sace valida.
                   </div>
@@ -120,9 +139,9 @@
             <div           
               class="col-sm-6">
                 <label for="lastName" class="form-label">Classe i Grup</label>
-                <input type="text" class="form-control" id="grupClasse" name = "grupClasse" placeholder="" value="" >
+                <input type="text" class="form-control" id="grupClasse" name = "grupClasse" placeholder="" value= '<?= $grupClasse; ?>' >
                 <div class="invalid-feedback">
-                  El camp data d'adquisició es obligatori.
+                  El grup de clase es obligat.
                 </div>
             </div>
           </div>
@@ -148,3 +167,16 @@
       <script src="./js/form-validation.js"></script>
   </body>
 </html>
+
+   
+
+    <?php 
+    
+    if (!mysqli_query($conn, $sql)): ?>
+   
+        <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pagina_inicial.php?ok=-1&search=3">
+    <?php endif;
+    
+
+    $conn->close();
+?>

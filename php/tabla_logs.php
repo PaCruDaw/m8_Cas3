@@ -15,25 +15,21 @@
             VALUES ('$nav', '$ip', $iduser, '$fecha_actual', $accio);";
 
     if (mysqli_query($conn, $sql)) {
-        echo "New record created successfully"; ?>
-        
-    <?php
+        if ($_GET["accio"] == 1) { 
+            $conn->close();?>
+            <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pagina_inicial.php"> 
+        <?php } elseif ($_GET["accio"] == 0) { 
+            $conn->close();?>
+                <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=logout.php"> 
+        <?php } else {
+            $conn->close();
+        }
     } else {
-        
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn); ?>
-        
-    <?php 
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 
-    $conn->close(); //tanquem connexio abans de la redireccio
 
-    if ($_GET["accio"] ==1) { ?>
-        <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pagina_inicial.php">    
-    <?php } else {
-        session_unset();
-        session_destroy(); ?>
-        <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=../index.php"> 
-    <?php }  
+    
     
 //funcio per guardar nom navegador    
 function get_browser_name($user_agent)

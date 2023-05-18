@@ -1,5 +1,6 @@
 <?php
-    //Comença una nova sessio o reutilitza la sessió
+ 
+ //Comença una nova sessio o reutilitza la sessió
     session_start();
 
      //Conexio al php de la base de dades
@@ -27,8 +28,6 @@
             $_SESSION["id"] = $row["id"];
 
             mysqli_close($conn); //tanquem per el redireccionament
-
-            //require "tabla_logs.php";
             $cookie_value = $user;
             setcookie("Usuari_connexio", $cookie_value, time() + (86400));
             header("location: tabla_logs.php?accio=1");   

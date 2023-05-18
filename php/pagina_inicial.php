@@ -1,4 +1,5 @@
 <?php
+
     session_start();
     //include "../html/capçelera_pagina_inicial.html";
 
@@ -71,7 +72,7 @@
             <li class="nav-item" style="color:black;">
                 <a class="nav-link" href="pagina_inicial.php?search=1" >
                   <span data-feather="file"></span>
-                    Gestió Sol.licituts
+                    Gestió Assignacions
                 </a>
               </li>
               <li class="nav-item" >
@@ -225,6 +226,16 @@
                           <?php endif;
                         endif;
                         if ($_SESSION["profe"] == 1) : //vistas profesor columnas titulos
+                            if ($_GET["search"]==1) { ?>
+                                <tr>
+                                  <th>id</th>
+                                  <th>idAlumne</th>
+                                  <th>idMaterial</th>
+                                  <th>dataInici</th>
+                                  <th>dataFinal</th>
+                                  <th> Action</th> 
+                                </tr>        
+                            <?php }
                             if ($_GET["search"] == 2): ?> 
                                 <tr>
                                   <th>id</th>
@@ -253,17 +264,25 @@
                           //reserques de professor
                           if (($_SESSION["profe"] == 1) ) {
                             if (!isset($_GET["search"])) { //no existeix search ?>
-                              <div>
+                              <div class="form-group col-md-12">
+                                <h1>Reserca de material en les aules</h1>
                                   <form action="#" method ="get">
-                                      <label for="fname">Reserca material en el aula:</label>
-                                      <input type="text" id="aula" name="aula"><br>
+                                      <label for="fname">Ubicació:</label>
+                                      <input class = "" type="text" id="aula" name="aula">
+                                      <label for="fname">Tipus material:</label>
+                                      <input type="text" id="tipus" name="tipus">
+                                      <button class="btn btn-sm btn-primary" type="submit">Envia consulta</button><br>
                                   </form>
                                   
                               </div>
-                              <div>
+                              <div style="margin: top 20px;">
+                                <h1>Reserca de material assignat al alumnat</h1>
                                   <form action="#" method ="get">
-                                      <label for="fname">Reserca material assignat al alumne:</label>
-                                      <input type="text" id="alumne" name="alumne"><br>
+                                      <label for="fname">Reserca alumne:</label>
+                                      <input type="text" id="alumne" name="alumne">
+                                      <label for="fname">Tipus material:</label>
+                                      <input type="text" id="tipus" name="tipus">
+                                      <button class="btn btn-sm btn-primary" type="submit">Envia consulta</button><br>
                                   </form>
                                   
                               </div>
@@ -274,11 +293,10 @@
                               if (isset($_GET["alumne"])) {
                                 require "reserques_mestre_alumnat.php"; 
 
-                              }
-                                
+                              }                                
                             }
                             if ($_GET["search"]==1){
-                              require "reserca_solicituts.php";
+                              require "reserca_assignacions.php";
                             }
                             if ($_GET["search"]==2){
                               require "reserca_material.php";

@@ -6,10 +6,11 @@
             FROM Usuaris
             INNER JOIN Assignacions ON Usuaris.id = Assignacions.idAlumne;";
 
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) { ?>
+    if (mysqli_query($conn, $sql)) { 
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) { ?>
                 <tr>
                     <th scope="row" class="ps-4">
                         <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" />
@@ -33,9 +34,16 @@
                         </ul>
                     </td>
                 <tr>';
-        <?php }
-    } else {
-        echo "0 resultats";
-    } 
+            
+<?php 
+            }
+        } else {
+        echo '0 results';
+        } ?>
+    <?php 
+    } else { ?>
+        <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pagina_inicial.php?ok=-1">
+    <?php }
+
     $conn->close();
 ?>

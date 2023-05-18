@@ -10,9 +10,10 @@
 
     $cognom1 = $_POST["cognom1"];
     
-   
-    $cognom2 = $_POST["cognom2"];
     
+    $cognom2 = $_POST["cognom2"];
+   
+
     $correu = $_POST["correu"];
 
     $grupClasse = $_POST["grupClasse"];
@@ -30,8 +31,10 @@
         $roll = "NULL";
     }         
         
-    $sql = "INSERT INTO Usuaris (id, nom, cognom1, cognom2, correu, grupClasse, contrasenya, roll)
-            VALUES ($id, '$nom', '$cognom1', '$cognom2', '$correu', '$grupClasse','$contrasenya', $roll);";
+    $sql = "UPDATE Usuaris
+            SET nom = '$nom', cognom1 = '$cognom1', cognom2 = '$cognom2',  correu = '$correu',  grupClasse = '$grupClasse',
+                contrasenya = '$contrasenya', roll = $roll
+            WHERE id = $id;";
 
   
     if (mysqli_query($conn, $sql)) {
