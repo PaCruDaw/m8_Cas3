@@ -17,7 +17,6 @@
             $cognom1 = $row["cognom1"];
             $cognom2 = $row["cognom2"];
             $correu = $row["correu"];
-            $contrasenya = $row["contrasenya"];
             $roll = $row["roll"];            
             $grupClasse = $row["grupClasse"];
 
@@ -115,16 +114,6 @@
                   El correu es obligatori
                 </div>
               </div>
-            </div>
-
-            <div class="col-sm-6">
-                <label for="username" class="form-label">Contrasenya</label>
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="contrasenya" name = "contrasenya" placeholder="" value = '<?= $contrasenya; ?>'>
-                  <div class="invalid-feedback">
-                    Introdueix una MAC valida.
-                  </div>
-                </div>
             </div>
 
             <div class="col-sm-6">

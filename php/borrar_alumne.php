@@ -4,7 +4,6 @@
 
     $id=$_POST["id"];
 
-   
     $sql = "DELETE FROM Usuaris 
             WHERE id = $id";
             

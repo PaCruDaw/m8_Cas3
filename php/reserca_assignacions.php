@@ -8,6 +8,7 @@
     if (mysqli_query($conn, $sql)) { 
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
+            $counter = $result->num_rows;
             // output data of each row
             while($row = $result->fetch_assoc()) { ?>
                 <tr>
@@ -53,6 +54,8 @@
             
 <?php 
             }
+            echo '<br>';
+            echo "Total de registres trobats: ".$counter;
         } else {
         echo '0 results';
         } ?>

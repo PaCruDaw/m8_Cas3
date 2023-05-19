@@ -19,12 +19,6 @@
     $grupClasse = $_POST["grupClasse"];
     
 
-    if (($_POST["contrasenya"]) != "") {
-        $contrasenya = MD5($_POST["contrasenya"]);
-    } else {
-        $contrasenya = "NULL";
-    } 
-
     if (($_POST["roll"]) != "") {
         $roll = $_POST["roll"];
     } else {
@@ -33,7 +27,7 @@
         
     $sql = "UPDATE Usuaris
             SET nom = '$nom', cognom1 = '$cognom1', cognom2 = '$cognom2',  correu = '$correu',  grupClasse = '$grupClasse',
-                contrasenya = '$contrasenya', roll = $roll
+             roll = $roll
             WHERE id = $id;";
 
   

@@ -33,8 +33,7 @@
                             </li>
                         </ul>
                     </td>
-                <tr>';
-            
+                <tr>
 <?php 
             }
         } else {

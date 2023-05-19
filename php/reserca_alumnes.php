@@ -8,6 +8,8 @@
 
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
+        $counter = $result->num_rows;
+
         // output data of each row
         while ($row = $result->fetch_assoc()) { ?>
                 <tr >
@@ -17,7 +19,6 @@
                     <td><?=$row["cognom2"]?></td>
                     <td><?=$row["correu"]?></td>
                     <td><?=$row["grupClasse"]?></td>
-                    <td><?=$row["contrasenya"]?></td>
                     <td><?=$row["roll"]?></td>
                     <td > 
                         <ul class="list-inline mb-0">
@@ -59,6 +60,8 @@
 
 <?php  
         }
+        echo '<br>';
+        echo "Total de registres trobats: ".$counter;
     } else {
         echo '0 results';
     } 

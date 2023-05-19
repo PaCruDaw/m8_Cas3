@@ -62,6 +62,8 @@
 
 <?php  
         }
+        echo '<br>';
+        echo "Total de registres trobats: ".$counter;
     } else {
         echo '0 results';
     } 
