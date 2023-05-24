@@ -113,7 +113,7 @@
               <?php //vista boto per a alumne
                 if (($_SESSION["profe"] == 0) ):
                   if ($_GET["search"] == 1): ?>
-                    <button type="button" class="btn btn-sm btn-outline-secondary " onclick = "location='../html/Pagina_reserca_incidencies.html'" > 
+                    <button type="button" class="btn btn-sm btn-outline-secondary " onclick = "location='../html/formulari_incidencies.html'" > 
                       <span data-feather="Sol.licitar"></span>
                         Crear Incidencia
                     </button>
