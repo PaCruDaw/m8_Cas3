@@ -45,8 +45,8 @@
   <main >
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="../imagenes/logoCombinat.jpg" alt="" width="82" height="67">
-      <h2>Alta de material</h2>
-      <p class="lead">Omple el següent formulari per a donar d'alta el material per al seu prestec al alumnat.</p>
+      <h2>Alta de incidencies</h2>
+      <p class="lead">Omple el següent formulari per a comunicar una incidencia.</p>
     </div>
 
     <div class="row g-5">
@@ -65,58 +65,25 @@
             </div>
 
             <div class="col-sm-3">
-              <label for="lastName" class="form-label">informacio</label>
-              <input type="text" class="form-control" id="informacio" name = "informacio" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                El camp etiqueta es obligatori.
-              </div>
-            </div>
-           
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">DataOberta</label>
-              <input type="text" class="form-control" id="dataOberta" name = "dataOberta" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                El camp etiqueta es obligatori.
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">DataTancada</label>
-              <input type="text" class="form-control" id="dataTancada" name ="dataTancada" placeholder="" value="" >
-              <div class="invalid-feedback">
-                El camp número de serie es obligatori.
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <label for="username" class="form-label">idAlumne</label>
-              <div class="input-group has-validation">
-                <input type="text" class="form-control" id="idAlumne" name = "idAlumne" placeholder="">
-                <div class="invalid-feedback">
-                  Introdueix una MAC valida.
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
                 <label for="username" class="form-label">idDispositiu</label>
                 <div class="input-group has-validation">
                   <input type="text" class="form-control" id="idDispositiu" name = "idDispositiu" placeholder="">
                   <div class="invalid-feedback">
-                    Introdueix una MAC valida.
+                    Introdueix un id valida.
                   </div>
                 </div>
             </div>
 
-            <div class="col-sm-6">
-                <label for="username" class="form-label">idEstat</label>
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="idEstat" name = "idEstat" placeholder="">
-                  <div class="invalid-feedback">
-                    Introdueix una sace valida.
-                  </div>
-                </div>
+            <div class="col-sm-12">
+              <label for="lastName" class="form-label">informacio</label>
+              <textarea rows="10" cols="30" type="text" class="form-control" id="informacio" name = "informacio" placeholder="" value="" required>
+                  Descriu el problema
+              </textarea>
+              <div class="invalid-feedback">
+                El camp etiqueta es obligatori.
+              </div>
             </div>
+            <input type="hidden" class="form-control" id="idEstat" name = "idEstat" placeholder="" value = "3">
 
           <hr class="my-4">
 

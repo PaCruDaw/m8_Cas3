@@ -1,6 +1,8 @@
 <?php 
     session_start();
     require "dbconexio.php";
+    date_default_timezone_set("Europe/Madrid"); //per a que agafe correctament la zona horaria
+
 
     $id = $_POST["id"];
 
@@ -8,20 +10,17 @@
     $informacio = $_POST["informacio"];
     
 
-    $dataOberta = $_POST["dataOberta"];
+    $dataOberta = date("Y-m-d");
+
     
-    $dataTancada = $_POST["dataTancada"];
-    
-    $idAlumne = $_POST["idAlumne"];
+    $idAlumne = $_SESSION["id"]; //es el que esta autentificat el que cree la incidencia
 
     $idDispositiu = $_POST["idDispositiu"];
     $idEstat = $_POST["idEstat"];
 
-
-
         
-$sql = "INSERT INTO Incidencies (id, informacio, dataOberta, dataTancada, idAlumne, idDispositiu, idEstat)
-    VALUES ($id, '$informacio', DATE_FORMAT('$dataOberta', '%Y-%m-%d'), DATE_FORMAT('$dataTancada', '%Y-%m-%d'), '$idAlumne', '$idDispositiu', '$idEstat');";
+$sql = "INSERT INTO Incidencies (id, informacio, dataOberta, idAlumne, idDispositiu, idEstat)
+        VALUES ($id, '$informacio', DATE_FORMAT('$dataOberta', '%Y-%m-%d'), '$idAlumne', '$idDispositiu', '$idEstat');";
 
 
   

@@ -1,15 +1,17 @@
 <?php 
     session_start();
+
     require "dbconexio.php"; 
 
     $alumne = $_GET["alumne"];
-    $tipus= $_GET["tipus"];
-    $alu = "AND Usuaris.nom ="."'".$alumne."'";
-    $tip = "AND Material.idTipus =".$tipus;
-    if ($aula!="") {
+    $tipus = $_GET["tipus"];
+    $alu = " AND Usuaris.nom ="."'".$alumne."'";
+    $tip = " AND Material.idTipus =".$tipus;
+
+    if ($alumne!="") {
         $resercaU = $alu;
     } else {
-        $reserca="";
+        $resercaU = "";
     }
     
     if ($tipus!="") {
@@ -17,6 +19,7 @@
     } else {
         $resercaM="";
     }
+    
     if (($aula=="")&&($tip=="")) { ?>
         <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pagina_inicial.php"> 
     <?php }

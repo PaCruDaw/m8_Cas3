@@ -23,7 +23,7 @@
                     <td > 
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
-                                <a href="formulari_edicio_alumne.php?id=<?= $row['id']?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary" ><i class="bx bx-pencil font-size-18"></i></a>
+                                <a href="formulari_edicio_incidencia.php?id=<?= $row['id']?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary" ><i class="bx bx-pencil font-size-18"></i></a>
                             </li>
                             <li class="list-inline-item"  >
                                 <a href="#" class="px-2 text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="<?= $row['id']; ?>">

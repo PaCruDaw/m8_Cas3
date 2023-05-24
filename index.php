@@ -1,5 +1,10 @@
 <?php  
+/**
+ * Aquesta es la pagina inicial de login, si la sessió es creada, es a dir si existeix $_SESSION["user"] ens porte directes a la pàgina 
+ * principal, sino presenta el formulari per fer login.
+ */
  session_start();
+
 if (isset($_SESSION["user"])): ?>
       
   <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=/php/pagina_inicial.php">

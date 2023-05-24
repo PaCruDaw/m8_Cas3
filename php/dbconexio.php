@@ -1,4 +1,7 @@
 <?php
+/**
+ * Fitxer que ens permet la conexio a la base de dades. 
+ */
     $servername = "mariadb";
     $database = "miapp";
     $username = "alumne";

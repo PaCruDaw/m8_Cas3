@@ -1,5 +1,10 @@
 <?php
- 
+ /**
+  * Aquest fitxer es el que comprova si existeix un usuari amb eixe nom i contrasenya a la base de dades,
+  * si existeix done valor a les variables de sessió i redirecciona a la pagina principal, de produirse un error ens 
+  * retorna a login i ens fa un $_GET per crear un missatge.
+  */
+
  //Comença una nova sessio o reutilitza la sessió
     session_start();
 

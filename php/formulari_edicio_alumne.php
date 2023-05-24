@@ -33,7 +33,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Formulari alta material</title>
+    <title>Modificar alumne</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
 
@@ -72,8 +72,8 @@
   <main >
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="../imagenes/logoCombinat.jpg" alt="" width="82" height="67">
-      <h2>Alta de material</h2>
-      <p class="lead">Omple el següent formulari per a poder insertar un nou alumne.</p>
+      <h2>Modificacio d'Alumne <?= $nom; ?> <?= $cognom1; ?></h2>
+      <p class="lead">Formularia de edició d'alumnes.</p>
     </div>
 
     <div class="row g-5">

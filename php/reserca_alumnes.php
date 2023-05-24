@@ -3,7 +3,8 @@
     require "dbconexio.php";
 
     $sql = "SELECT *
-            FROM Usuaris";
+            FROM Usuaris
+            WHERE roll = 0 ;"; //domes volem els alumnes no els professors
             
 
     $result = $conn->query($sql);
@@ -53,8 +54,7 @@
                         </ul>
                     </td>
                 </tr>
-
-                
+                                
     <script type="text/javascript" src="../js/modales.js"></script>
 
 <?php  

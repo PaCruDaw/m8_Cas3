@@ -5,7 +5,7 @@
     $id = $_GET["id"];
   
     $sql = "SELECT *
-            FROM Usuaris WHERE id=$id";
+            FROM Incidencies WHERE id=$id";
     
     $result = $conn->query($sql);
 
@@ -17,13 +17,12 @@
             $dataOberta = $row["dataOberta"];
             $dataTancada = $row["dataTancada"];
             $idAlumne = $row["idAlumne"];
-            $idDispositiu = $row["idDispositiu"];            
-
+            $idDispositiu = $row["idDispositiu"];
+            $idEstat = $row["idEstat"];            
 
         }
 
     }?>
-
 
 <!doctype html>
 <html lang="en">
@@ -33,7 +32,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Formulari alta material</title>
+    <title>Modificar inciencia</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
 
@@ -68,86 +67,55 @@
   </head>
   <body class="bg-light">
     
-<div class="container">
+  <div class="container">
   <main >
-  <div class="py-5 text-center">
+    <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="../imagenes/logoCombinat.jpg" alt="" width="82" height="67">
-      <h2>Formulari per a la creacio d'incidencies de <?= $_SESSION["nom"]; ?></h2>
+      <h2>Modificar incidencia</h2>
+      <p class="lead">Omple el següent formulari per modificar una incidencia.</p>
     </div>
 
     <div class="row g-5">
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Formulari</h4>
         <form class="needs-validation" novalidate action="../php/update_incidencia.php" method="post">
-        <input type="hidden" class="form-control" id="id" name = "id" placeholder="" value='<?= $id; ?>' required>
           <div class="row g-3">
-          <div class="col-sm-3">
-              <label for="lastName" class="form-label">id</label>
-              <input type="text" class="form-control" id="id" name = "id" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                El camp etiqueta es obligatori.
-              </div>
-            </div>
-
+          
             <div class="col-sm-3">
-              <label for="lastName" class="form-label">informacio</label>
-              <input type="text" class="form-control" id="informacio" name = "informacio" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                El camp etiqueta es obligatori.
-              </div>
-            </div>
-           
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">DataOberta</label>
-              <input type="text" class="form-control" id="dataOberta" name = "dataOberta" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                El camp etiqueta es obligatori.
-              </div>
-            </div>
-
-            <div class="col-sm-6">
               <label for="lastName" class="form-label">DataTancada</label>
-              <input type="text" class="form-control" id="dataTancada" name ="dataTancada" placeholder="" value="" >
+              <input type="text" class="form-control" id="dataTancada" name ="dataTancada" placeholder="" value='<?= $dataTancada; ?>' >
               <div class="invalid-feedback">
                 El camp número de serie es obligatori.
               </div>
             </div>
 
-            <div class="col-sm-6">
-              <label for="username" class="form-label">idAlumne</label>
-              <div class="input-group has-validation">
-                <input type="text" class="form-control" id="idAlumne" name = "idAlumne" placeholder="">
-                <div class="invalid-feedback">
-                  Introdueix una MAC valida.
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-                <label for="username" class="form-label">idDispositiu</label>
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="idDispositiu" name = "idDispositiu" placeholder="">
-                  <div class="invalid-feedback">
-                    Introdueix una MAC valida.
-                  </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <label for="username" class="form-label">idEstat</label>
                 <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="idEstat" name = "idEstat" placeholder="">
+                  <input type="text" class="form-control" id="idEstat" name = "idEstat" placeholder="" value='<?= $idEstat; ?>'>
                   <div class="invalid-feedback">
                     Introdueix una sace valida.
                   </div>
                 </div>
             </div>
 
-          <hr class="my-4">
+            <div class="col-sm-12">
+              <label for="lastName" class="form-label">informacio</label>
+              <textarea rows="10" cols="30" type="text" class="form-control" id="informacio" name = "informacio" placeholder="" >
+              <?= $informacio; ?>
+              </textarea>              <div class="invalid-feedback">
+                El camp etiqueta es obligatori.
+              </div>
+          </div>
+
+          <input type="hidden" class="form-control" id="idAlumne" name = "idAlumne" placeholder="" value='<?= $idAlumne; ?>' >
+          <input type="hidden" class="form-control" id="dataOberta" name ="dataOberta" placeholder="" value='<?= $dataOberta; ?>' >
+          <input type="hidden" class="form-control" id="id" name = "id" placeholder="" value='<?= $id; ?>' required>
+          <input type="hidden" class="form-control" id="idDispositiu" name = "idDispositiu" placeholder="" value='<?= $idDispositiu; ?>'>
+
 
           <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
         </form>
-      </div>
     </div>
   </main>
 

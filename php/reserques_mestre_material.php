@@ -7,6 +7,7 @@
     $tipus= $_GET["tipus"];
     $ubi = "AND Ubicacions.nom ="."'".$aula."'";
     $tip = "AND Material.idTipus =".$tipus;
+
     if(($aula!="")&&($tipus=="")) {
         $reserca = $ubi;
     } else if (($aula=="")&&($tipus!="")) {
@@ -15,7 +16,6 @@
         $reserca = $ubi.$tip;
 
     } 
-
     
     $sql = "SELECT Material.id, Material.idTipus, Ubicacions.nom
             FROM Material

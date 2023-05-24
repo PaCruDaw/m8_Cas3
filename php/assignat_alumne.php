@@ -2,9 +2,11 @@
     session_start();
     require "dbconexio.php";
 
+    $idA = $_SESSION["id"];
+
     $sql = "SELECT Assignacions.id, Assignacions.idAlumne, Usuaris.nom
             FROM Usuaris
-            INNER JOIN Assignacions ON Usuaris.id = Assignacions.idAlumne;";
+            INNER JOIN Assignacions ON Usuaris.id = Assignacions.idAlumne AND Usuaris.id = $idA;";
 
     if (mysqli_query($conn, $sql)) { 
         $result = $conn->query($sql);

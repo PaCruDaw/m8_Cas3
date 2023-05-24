@@ -155,7 +155,7 @@
               <h2>Reserques a la base dades</h2>        
             <?php endif; ?>
             <?php  if ($_GET["search"] == 1): ?>
-              <h2>Gestió de solicituts</h2>
+              <h2>Gestió de assignacions</h2>
             <?php endif; ?>
             <?php  if ($_GET["search"] == 2): ?>
               <h2>Gestió de Material</h2>
@@ -192,29 +192,16 @@
                           <?php endif; ?>
                           <?php  if ($_GET["search"] == 1):  ?>                            
                             <tr>
-                                <th scope="col" class="ps-4" style="width: 50px;">
-                                    <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
-                                </th>
-                                <th scope="col">Id Incidencia</th>
-                                <th scope="col">Position</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Projects</th>
-                                <th scope="col" style="width: 200px;">Action</th>
+                                <th scope="col">Id</th>
+                                <th scope="col">IdDispositiu</th>
+                                <th scope="col">IdEstat</th>
+                                <th scope="col">Data Obertura</th>
+                                <th scope="col">Data Tancament</th>
+                                <th scope="col">Informacio</th>
                             </tr>
                           <?php endif;?>  
-                          <?php  if ($_GET["search"] == 2): ?>                           
-                            <tr>
-                                <th scope="col" class="ps-4" style="width: 50px;">
-                                    <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
-                                </th>
-                                <th scope="col">Solicitut</th>
-                                <th scope="col">Position</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Projects</th>
-                                <th scope="col" style="width: 200px;">Action</th>
-                            </tr>
-                          <?php endif;
-                        endif;
+                          
+                        <?php endif;
                         if ($_SESSION["profe"] == 1) : //vistas profesor columnas titulos
                             if ($_GET["search"]==1) { ?>
                                 <tr>
@@ -253,6 +240,18 @@
                                 <th>Accions</th>
                               </tr>                         
                           <?php endif;
+                          if ($_GET["search"] == 4): ?> 
+                            <tr>
+                              <th>id</th>
+                              <th>idAlumne</th>
+                              <th>idDispositiu</th>
+                              <th>idEstat</th>
+                              <th>dataOberta</th>
+                              <th>dataTancada</th>
+                              <th>informacio</th>
+                              <th>Accions</th>
+                            </tr>                         
+                        <?php endif;
                           endif; ?>
 
                       </thead>
@@ -262,27 +261,31 @@
                             if (!isset($_GET["search"])) {
                               require 'assignat_alumne.php'; 
                             } 
+                            if ($_GET["search"]==1) {
+                              require 'reserca_incidencies_alumne.php';
+                            }
                           } 
                           //reserques de professor
                           if (($_SESSION["profe"] == 1) ) {
                             if (!isset($_GET["search"])) { //no existeix search ?>
                               <div class="form-group col-md-12">
                                 <h1>Reserca de material en les aules</h1>
+                                <p> Introdueix el tipus de material i/o l'ubicació </p>
                                   <form action="#" method ="get">
-                                      <label for="fname">Ubicació:</label>
+                                      <label for="fname">Nom de 'Ubicació:</label>
                                       <input class = "" type="text" id="aula" name="aula">
-                                      <label for="fname">Tipus material:</label>
+                                      <label for="fname">Codi tipus material:</label>
                                       <input type="text" id="tipus" name="tipus">
                                       <button class="btn btn-sm btn-primary" type="submit">Envia consulta</button><br>
-                                  </form>
-                                  
-                              </div>
-                              <div style="margin: top 20px;">
+                                  </form>                                
+                              </div> 
+                              <div style="margin-top: 40px;">
                                 <h1>Reserca de material assignat al alumnat</h1>
+                                <p> Introdueix el nom i/o tipus de material </p>
                                   <form action="#" method ="get">
-                                      <label for="fname">Reserca alumne:</label>
+                                      <label for="fname">Reserca pel nom:</label>
                                       <input type="text" id="alumne" name="alumne">
-                                      <label for="fname">Tipus material:</label>
+                                      <label for="fname">Codi tipus material:</label>
                                       <input type="text" id="tipus" name="tipus">
                                       <button class="btn btn-sm btn-primary" type="submit">Envia consulta</button><br>
                                   </form>
