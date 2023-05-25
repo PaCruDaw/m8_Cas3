@@ -31,7 +31,8 @@
 
     
     
-//funcio per guardar nom navegador    
+//funcio per guardar nom navegador   
+
 function get_browser_name($user_agent)
 {
     if (strpos($user_agent, 'Opera') || strpos($user_agent, 'OPR/')) return 'Opera';

@@ -186,8 +186,6 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Position</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Projects</th>
-                                <th scope="col" style="width: 200px;">Action</th>
                             </tr>
                           <?php endif; ?>
                           <?php  if ($_GET["search"] == 1):  ?>                            
